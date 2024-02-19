@@ -6,90 +6,86 @@
             "id": "3cf3af0a-b789-4191-8a0b-c969691664fa",
             "actions": [
                 {
-                    "name": "Jump",
+                    "name": "JumpForward",
                     "type": "Button",
-                    "id": "462f4277-161f-4d76-bce2-aab954e4b028",
+                    "id": "7cba23e1-89e2-4d78-a8c3-3a0af31fd15c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Move",
-                    "type": "Value",
-                    "id": "a15eade8-9093-42dc-956a-f399f2530317",
-                    "expectedControlType": "Axis",
+                    "name": "JumpBackward",
+                    "type": "Button",
+                    "id": "d48c9c3e-e2d9-4a2b-b457-1a6c5d6486de",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "JumpLeft",
+                    "type": "Button",
+                    "id": "6f61abe9-ed0f-4b8b-ab6f-96720933a369",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "JumpRight",
+                    "type": "Button",
+                    "id": "267b2a61-2ecf-4fa8-9cce-52044f38e740",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
-                    "name": "1D Axis",
-                    "id": "50660a64-d108-416e-a046-d5bba8f1f59d",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "eedd7bd1-cbe2-40d3-af57-b8d50b8c3a09",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "0aa661bf-fb38-45c8-b16a-8b5e63f3dd78",
+                    "name": "",
+                    "id": "bdf4cb74-deb6-4aaa-8115-91cdceac2b62",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Jump",
+                    "action": "JumpForward",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "1D Axis",
-                    "id": "931e7dd8-009e-4f0a-bb47-6e4bc984b672",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "97477a87-d37f-4688-a3ca-ec2a29563f29",
+                    "name": "",
+                    "id": "8f1fc0a2-2d16-4b0a-9032-add8f5fdcd76",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JumpBackward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a69bfccb-8d05-4263-aea3-a2373357ecc5",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "JumpLeft",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "positive",
-                    "id": "67df6b1d-8557-42bb-add4-6421dee0e991",
+                    "name": "",
+                    "id": "6faf3350-5216-453b-8f1d-dd4821a0361e",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "JumpRight",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 }
             ]
         }
