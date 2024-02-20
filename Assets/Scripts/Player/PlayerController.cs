@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// PlayerCharacter 객체에 입력값을 전달하는 역할을 하는 게임 오브젝트의 컴포넌트입니다.
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
     /// <summary>

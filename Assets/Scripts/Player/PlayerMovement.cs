@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -73,26 +74,26 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // y축 속도 계산
-        CalculateY();
-
-        // 땅에 닿아있는지 체크합니다.
-        _IsGrounded = CheckGrounded();
+        // 점프키가 입력이 되었다면 점프합니다.
+        CheckJump();
 
         // x축 속도 계산
-        CalculateX();
+        UpdateGrounded();
     }
 
     /// <summary>
-    /// x축 속도를 계산합니다.
+    /// 땅에 닿아있는지를 갱신합니다.
     /// </summary>
-    private void CalculateX()
+    private void UpdateGrounded()
     {
         // 점프 입력을 받은 상태라면 함수를 종료합니다.
         if(_IsJumpInput)
         {
             return;
         }
+
+        // 땅에 닿아있는지 체크합니다.
+        _IsGrounded = CheckGrounded();
 
         // 땅에 닿아있다면 속도를 영벡터로 설정합니다.
         // 왼쪽 오른쪽으로 점프 이동 후, x 축 속도를 0으로 만들기 위한 구문입니다.
@@ -103,9 +104,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// y축 속도를 계산합니다.
+    /// 점프키를 입력받았다면 점프를 실행합니다.
+    /// 아니라면 중력을 적용합니다.
     /// </summary>
-    private void CalculateY()
+    private void CheckJump()
     {
         // 중력을 적용합니다.
         ApplyGravity();
@@ -163,17 +165,30 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Jump()
     {
-        // 점프 속도 설정
-        velocity = new Vector3(
-            _InputJumpDirection.x * 3.0f, 
-            _JumpForce, 
-            0.0f);
-
+        // 입력값 해제
         _IsJumpInput = false;
 
         // 캐릭터 회전
         Vector3 lookRotation = new Vector3(_InputJumpDirection.x, 0.0f, _InputJumpDirection.y);
         transform.rotation = Quaternion.LookRotation(lookRotation);
+
+        // 장애물에 가로막히면 점프를 실행하지 않습니다.
+        Vector3 start = boxCollider.center + transform.position;
+        Vector3 end = start + new Vector3(_InputJumpDirection.x, 0.0f, _InputJumpDirection.y) * 1.4f;         
+        if (Physics.Linecast(
+            start,
+            end,
+            1 << LayerMask.NameToLayer(Constants.LAYERNAME_OBSTACLE)            
+            ))
+        {         
+            return;
+        }
+
+        // 점프 속도 설정
+        velocity = new Vector3(
+            _InputJumpDirection.x * 3.0f, 
+            _JumpForce, 
+            0.0f);        
 
         // 점프 대리자 실행
         onJump?.Invoke(_InputJumpDirection);

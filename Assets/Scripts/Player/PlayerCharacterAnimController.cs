@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 플레이어 캐릭터의 애니메이션을 조절하는 컴포넌트입니다.
+/// </summary>
 public class PlayerCharacterAnimController : MonoBehaviour
 {
     /// <summary>
